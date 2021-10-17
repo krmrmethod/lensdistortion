@@ -13,13 +13,7 @@ Using the OpenCV implementation we can undistort images using either a single or
 
    * Distortion coefficients
 
-   ![image-20211018011526714](C:\Users\Nelson Suarez\AppData\Roaming\Typora\typora-user-images\image-20211018011526714.png)
-
    * Camera Matrix
-
-   ![image-20211018011547018](C:\Users\Nelson Suarez\AppData\Roaming\Typora\typora-user-images\image-20211018011547018.png)
-
-   ​		where $f_x$, $f_y$ refer to the focal length and $c_x$, $c_y$ are the optical centers.
 
 3. Finally using this parameters to apply an undistort function and interpolate the pixels in the image.
 
