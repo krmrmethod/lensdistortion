@@ -13,4 +13,4 @@ cv::Mat applyEdgeDetection(cv::Mat& src, int dx, int dy);
 cv::Mat applySobel(cv::Mat& src, int dx, int dy);
 cv::Mat applyScharr(cv::Mat& src, int dx, int dy);
 void calibrateCamera(std::vector<cv::Mat>& src, cv::Mat outParams[], int cbCornerRows, int cbCornerCols);
-void refineCamera(int imgRows, int imgCols, cv::Mat camMatrix, cv::Mat distCoeffs, int typeUndistort, cv::Mat& image);
+void refineCamera(int imgRows, int imgCols, cv::Mat camMatrix, cv::Mat distCoeffs, int typeUndistort, cv::Mat& image, std::string outFolder);

@@ -113,7 +113,7 @@ void calibrateCamera(vector<cv::Mat>& src, cv::Mat outParams[], int cbCornerRows
 	cout << "Finalized calibration." << endl;
 }
 
-void refineCamera(int imgRows, int imgCols, cv::Mat camMatrix, cv::Mat distCoeffs, int typeUndistort, cv::Mat& image)
+void refineCamera(int imgRows, int imgCols, cv::Mat camMatrix, cv::Mat distCoeffs, int typeUndistort, cv::Mat& image, string outFolder)
 {
 	cv::Mat dst, map1, map2, newCamMatrix;
 	cv::Size imageSize(cv::Size(imgCols, imgRows));
@@ -138,7 +138,7 @@ void refineCamera(int imgRows, int imgCols, cv::Mat camMatrix, cv::Mat distCoeff
 	}
 
 	ostringstream outputFile;
-	outputFile << "z:\\sandbox\\lensdistortion\\output\\result\\calibrated-type("<< typeUndistort <<").png";
+	outputFile << outFolder << "\\result\\calibrated-type("<< typeUndistort <<").png";
 
 	cv::imwrite(outputFile.str(), dst);
 
