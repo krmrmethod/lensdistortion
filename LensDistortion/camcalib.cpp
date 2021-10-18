@@ -26,7 +26,7 @@ cv::Mat applyScharr(cv::Mat& src, int dx, int dy)
 	return edges;
 }
 
-void convertToGray(vector<cv::Mat>& src, vector<cv::Mat>& dest) 
+void convertToGray(vector<cv::Mat>& src, vector<cv::Mat>& dest, const string& outFolder) 
 {
 	for (int i{ 0 }; i < src.size(); i++)
 	{
@@ -38,7 +38,12 @@ void convertToGray(vector<cv::Mat>& src, vector<cv::Mat>& dest)
 		dest.push_back(frame);
 
 		ostringstream grayoutput;
-		grayoutput << "z:\\sandbox\\lensdistortion\\output\\grayscale\\grayscale(" << i << ").png";
+		grayoutput << outFolder << "\\grayscale";
+
+		handleOutFolder(grayoutput.str());
+
+		grayoutput << "\\grayscale(" << i << ").png";
+
 		cv::imwrite(grayoutput.str(), frame);
 
 		cout << "Succesful grayscale for image nr: " << i << endl;
@@ -47,7 +52,7 @@ void convertToGray(vector<cv::Mat>& src, vector<cv::Mat>& dest)
 }
 
 
-void calibrateCamera(vector<cv::Mat>& src, cv::Mat outParams[], int cbCornerRows, int cbCornerCols)
+void calibrateCamera(vector<cv::Mat>& src, cv::Mat outParams[], int cbCornerRows, int cbCornerCols, const string& outFolder)
 {
 	cout << "Starting calibration" << endl;
 	
@@ -97,7 +102,11 @@ void calibrateCamera(vector<cv::Mat>& src, cv::Mat outParams[], int cbCornerRows
 			imgPoints.push_back(corner_pts);
 
 			ostringstream output;
-			output << "z:\\sandbox\\lensdistortion\\output\\chessboard\\chessboard(" << i << ").png";
+			output << outFolder <<"\\chessboard";
+
+			handleOutFolder(output.str());
+
+			output << "\\chessboard(" << i << ").png";
 
 			cout << "Writing image nr: " << i << endl;
 			cv::imwrite(output.str(), colorCB);
@@ -138,7 +147,11 @@ void refineCamera(int imgRows, int imgCols, cv::Mat camMatrix, cv::Mat distCoeff
 	}
 
 	ostringstream outputFile;
-	outputFile << outFolder << "\\result\\calibrated-type("<< typeUndistort <<").png";
+	outputFile << outFolder << "\\result";
+
+	handleOutFolder(outputFile.str());
+
+	outputFile << "\\calibrated-type("<< typeUndistort <<").png";
 
 	cv::imwrite(outputFile.str(), dst);
 

@@ -53,13 +53,11 @@ void handleOutFolder(const string& dir_path)
     if (!fs::exists(dir_path))
     {
         h_result = fs::create_directory(outputFolder);
-        cout << "Created output folder" << endl;
+        cout << "Created folder: " << dir_path << endl;
     }
     else
     {
         h_result = true;
-        cout << "Output folder already exists" << endl;
+        cout << "Folder: " << dir_path <<" already exists" << endl;
     }
-
-
 }

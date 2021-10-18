@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 
     //convert to grayscale
     std::vector<cv::Mat> grayCheckboards;
-    convertToGray(checkboards, grayCheckboards);
+    convertToGray(checkboards, grayCheckboards, outDirPath);
 
     //make binary images
     vector<cv::Mat> binaryCheckboards;
@@ -75,7 +75,7 @@ int main(int argc, char** argv)
     // [3] Translation Vector
     cv::Mat calibParams[4];
 
-    calibrateCamera(binaryCheckboards, calibParams, 6, 8);
+    calibrateCamera(binaryCheckboards, calibParams, 6, 8, outDirPath);
 
     std::cout << "Camera Matrix: " << calibParams[0] << endl;
     std::cout << "Distance Coefficients: " << calibParams[1] << endl;
